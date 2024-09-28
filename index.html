@@ -1,0 +1,56 @@
+.    html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>هل يحبون بعضهم البعض؟</title>
+</head>
+<body>
+  <h1>هل يحبون بعضهم البعض؟</h1>
+  <form>
+    <label for="your-name">اسمك:</label>
+    <input type="text" id="your-name">
+    <br>
+    <label for="crush-name">اسم حبيبك/حبيبتك:</label>
+    <input type="text" id="crush-name">
+    <br>
+    <input type="submit" value="تحقق">
+  </form>
+  <br>
+  <div id="result"></div>
+
+  <script>
+// Get the form and the result div
+const form = document.querySelector('form');
+const result = document.querySelector('#result');
+
+// Add a submit event listener to the form
+form.addEventListener('submit', (event) => {
+  // Prevent the form from submitting
+  event.preventDefault();
+
+  // Get the names from the form
+  const yourName = document.querySelector('#your-name').value;
+  const crushName = document.querySelector('#crush-name').value;
+
+  // Check if the names are empty
+  if (yourName === '' || crushName === '') {
+    // Display an error message
+    result.innerHTML = 'الرجاء إدخال اسمين صحيحين.';
+    return;
+  }
+
+  // Generate a random number between 0 and 1
+  const randomNumber = Math.random();
+
+  // Check if the random number is greater than 0.5
+  if (randomNumber > 0.5) {
+    // Display a positive message
+    result.innerHTML = `${yourName} و${crushName} يحبان بعضهما البعض!`;
+  } else {
+    // Display a negative message
+    result.innerHTML = `${yourName} و${crushName} لا يحبان بعضهما البعض...`;
+  }
+});
+  </script>
+</body>
+</html>
